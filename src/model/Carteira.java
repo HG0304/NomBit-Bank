@@ -9,5 +9,5 @@ package model;
  * @author unifhnomura
  */
 public class Carteira {
-    
+    double saldo;
 }

@@ -9,5 +9,20 @@ package model;
  * @author unifhnomura
  */
 public class Ethereum extends Moedas{
+        double valorDeMercado;
+
+    public double getValorDeMercado() {
+        return valorDeMercado;
+    }
+
+    public void setValorDeMercado(double valorDeMercado) {
+        this.valorDeMercado = valorDeMercado;
+    }
+
+    public Ethereum(double valorDeMercado, int type) {
+        super(type);
+        this.valorDeMercado = valorDeMercado;
+    }
+    
     
 }

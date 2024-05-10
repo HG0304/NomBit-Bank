@@ -4,6 +4,8 @@
  */
 package nombit.bank;
 
+import view.LoginFrame;
+
 /**
  *
  * @author unifhnomura
@@ -14,7 +16,8 @@ public class NomBitBank {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        LoginFrame jc = new LoginFrame();
+        jc.setVisible(true);
     }
     
 }
