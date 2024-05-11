@@ -4,7 +4,7 @@
  */
 package nombit.bank;
 
-import view.LoginFrame;
+import view.BankFrame;
 
 /**
  *
@@ -16,7 +16,7 @@ public class NomBitBank {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        LoginFrame jc = new LoginFrame();
+        BankFrame jc = new BankFrame();
         jc.setVisible(true);
     }
     

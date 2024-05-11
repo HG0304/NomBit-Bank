@@ -19,8 +19,8 @@ public class Bitcoin extends Moedas{
         this.valorDeMercado = valorDeMercado;
     }
 
-    public Bitcoin(double valorDeMercado, int type) {
-        super(type);
+    public Bitcoin(double valorDeMercado) {
+        super("Bitcoin", valorDeMercado);
         this.valorDeMercado = valorDeMercado;
     }
     

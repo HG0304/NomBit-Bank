@@ -9,22 +9,24 @@ package model;
  * @author unifhnomura
  */
 public class Moedas {
-    // type = 1 -> Real
-    // type = 2 -> Bitcoin
-    // type = 3 -> Ethereum
-    // type = 4 -> Ripple
-    private int type;
+    private String type;
+    private double valor;
 
-    public int getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(int type) {
-        this.type = type;
+    public double getValor() {
+        return valor;
     }
-    
-    public Moedas(int type) {
+
+    public void setValor(double valor) {
+        this.valor = valor;
+    }
+
+    public Moedas(String type, double valor) {
         this.type = type;
+        this.valor = valor;
     }
     
     

@@ -9,7 +9,7 @@ package model;
  * @author unifhnomura
  */
 public class Pessoa {
-    String Nome, CPF, senha;
+    String Nome, CPF;
 
     public String getNome() {
         return Nome;
@@ -27,18 +27,10 @@ public class Pessoa {
         this.CPF = CPF;
     }
 
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
-
-    public Pessoa(String Nome, String CPF, String senha) {
+    public Pessoa(String Nome, String CPF) {
         this.Nome = Nome;
         this.CPF = CPF;
-        this.senha = senha;
+
     }
     
     

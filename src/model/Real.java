@@ -19,8 +19,8 @@ public class Real extends Moedas{
         this.valorDeMercado = valorDeMercado;
     }
 
-    public Real(double valorDeMercado, int type) {
-        super(type);
+    public Real(double valorDeMercado) {
+        super("Real", valorDeMercado);
         this.valorDeMercado = valorDeMercado;
     }
     

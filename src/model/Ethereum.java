@@ -19,8 +19,8 @@ public class Ethereum extends Moedas{
         this.valorDeMercado = valorDeMercado;
     }
 
-    public Ethereum(double valorDeMercado, int type) {
-        super(type);
+    public Ethereum(double valorDeMercado) {
+        super("Ethereum", valorDeMercado);
         this.valorDeMercado = valorDeMercado;
     }
     

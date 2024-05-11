@@ -19,8 +19,8 @@ public class Ripple extends Moedas{
         this.valorDeMercado = valorDeMercado;
     }
 
-    public Ripple(double valorDeMercado, int type) {
-        super(type);
+    public Ripple(double valorDeMercado) {
+        super("Ripple", valorDeMercado);
         this.valorDeMercado = valorDeMercado;
     }
     
