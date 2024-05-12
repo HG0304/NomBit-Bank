@@ -7,7 +7,6 @@ package controller;
 import DAO.Conexao;
 import DAO.LoginDAO;
 import model.Investidor;
-import view.BankFrame;
 import java.sql.SQLException;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -27,8 +26,8 @@ public class ControllerLogin {
     }
     
     public void loginInvestidor(){
-        Investidor investidor = new Investidor(null, view.getTxtCpf().getText(),
-                                      view.getTxtSenha().getText());
+        Investidor investidor = new Investidor(null, view.getTxtSenha().getText(), view.getTxtCpf().getText());
+       
         Conexao conexao = new Conexao();
         try{
             Connection conn = conexao.getConnection();
@@ -36,18 +35,23 @@ public class ControllerLogin {
             ResultSet res = dao.consultar(investidor);
             
             if(res.next()){
+                
                 JOptionPane.showMessageDialog(view, "Login feito!", "Aviso!", JOptionPane.INFORMATION_MESSAGE);
+                
                 String nome = res.getString("nome");
                 String cpf = res.getString("cpf");
                 String senha = res.getString("senha");
+
                 MenuFrame viewInvestidor = new MenuFrame(new Investidor(nome, senha, cpf));
                 viewInvestidor.setVisible(true);
-                view.setVisible(true);
+                view.dispose();
+                conn.close();
+                
             } else {
                 JOptionPane.showMessageDialog(view, "Login nao efetuado");
             }
         } catch(SQLException e){
-            JOptionPane.showMessageDialog(view, "Erro de conexao");
+            JOptionPane.showMessageDialog(view, "Erro de conexão: " + e.getMessage());
         }
     }
 }
