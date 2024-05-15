@@ -9,5 +9,7 @@ package model;
  * @author unifhnomura
  */
 public class Carteira {
-    double saldo;
+    double saldoReal, saldoBitcoin, saldoEthereum, saldoRipple;
+    
+    
 }
