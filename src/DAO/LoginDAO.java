@@ -19,7 +19,7 @@ public class LoginDAO {
     
     public ResultSet consultar(Investidor investidor) throws SQLException{
 
-        String sql = "SELECT cpf, senha FROM investidores WHERE cpf = ? and senha = ?;";
+        String sql = "SELECT * FROM investidores WHERE cpf = ? and senha = ?;";
         
         PreparedStatement statement = conn.prepareStatement(sql);
         statement.setString(1, investidor.getCPF());

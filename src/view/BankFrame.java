@@ -108,6 +108,7 @@ public class BankFrame extends javax.swing.JFrame {
     private void btLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLoginActionPerformed
         LoginFrame lf = new LoginFrame();
         lf.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btLoginActionPerformed
 
     /**
