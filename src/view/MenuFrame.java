@@ -173,7 +173,8 @@ public class MenuFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btBuyCripActionPerformed
 
     private void btSacarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSacarActionPerformed
-        // TODO add your handling code here:
+        SaqueFrame sf = new SaqueFrame(investidor);
+        sf.setVisible(true);
     }//GEN-LAST:event_btSacarActionPerformed
 
     private void btSellCripActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSellCripActionPerformed

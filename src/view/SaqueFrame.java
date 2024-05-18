@@ -1,29 +1,26 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package view;
 
+import controller.ControllerSaque;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import model.Investidor;
-import controller.ControllerDeposito;
 
 /**
  *
  * @author hugoe
  */
-public class DepositoFrame extends javax.swing.JFrame {
+public class SaqueFrame extends javax.swing.JFrame {
     private Investidor investidor;
-    private ControllerDeposito control;
+    private ControllerSaque control;
+    
     /**
-     * Creates new form DepositoFrame
+     * Creates new form SaqueFrame
      */
-    public DepositoFrame(Investidor investidor) {
+    public SaqueFrame(Investidor investidor) {
         initComponents();
         this.investidor = investidor;
-        this.control = new ControllerDeposito(this, investidor);
+        this.control = new ControllerSaque(this, investidor);
     }
 
     public Investidor getInvestidor() {
@@ -42,12 +39,12 @@ public class DepositoFrame extends javax.swing.JFrame {
         this.btConfirmar = btConfirmar;
     }
 
-    public JButton getjButton2() {
-        return jButton2;
+    public JButton getBtVoltar() {
+        return btVoltar;
     }
 
-    public void setjButton2(JButton jButton2) {
-        this.jButton2 = jButton2;
+    public void setBtVoltar(JButton btVoltar) {
+        this.btVoltar = btVoltar;
     }
 
     public JLabel getjLabel3() {
@@ -58,16 +55,16 @@ public class DepositoFrame extends javax.swing.JFrame {
         this.jLabel3 = jLabel3;
     }
 
-    public JTextField getTxtValorDoDeposito() {
-        return txtValorDoDeposito;
+    public JTextField getTxtValorDoSaque() {
+        return txtValorDoSaque;
     }
 
-    public void setTxtValorDoDeposito(JTextField txtValorDoDeposito) {
-        this.txtValorDoDeposito = txtValorDoDeposito;
+    public void setTxtValorDoSaque(JTextField txtValorDoSaque) {
+        this.txtValorDoSaque = txtValorDoSaque;
     }
     
     
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -78,9 +75,9 @@ public class DepositoFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         btConfirmar = new javax.swing.JButton();
-        txtValorDoDeposito = new javax.swing.JTextField();
+        txtValorDoSaque = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        btVoltar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -91,12 +88,12 @@ public class DepositoFrame extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setText("Informe o valor do depósito:");
+        jLabel3.setText("Informe o valor do saque:");
 
-        jButton2.setText("Voltar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btVoltar.setText("Voltar");
+        btVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btVoltarActionPerformed(evt);
             }
         });
 
@@ -110,13 +107,13 @@ public class DepositoFrame extends javax.swing.JFrame {
                         .addGap(24, 24, 24)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtValorDoDeposito, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtValorDoSaque, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(155, 155, 155)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btConfirmar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(30, Short.MAX_VALUE))
+                            .addComponent(btVoltar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -124,11 +121,11 @@ public class DepositoFrame extends javax.swing.JFrame {
                 .addGap(90, 90, 90)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txtValorDoDeposito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtValorDoSaque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(48, 48, 48)
                 .addComponent(btConfirmar)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2)
+                .addComponent(btVoltar)
                 .addContainerGap(76, Short.MAX_VALUE))
         );
 
@@ -136,18 +133,18 @@ public class DepositoFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConfirmarActionPerformed
-        control.Depositar();
+        control.Sacar();
     }//GEN-LAST:event_btConfirmarActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVoltarActionPerformed
         this.dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btVoltarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btConfirmar;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btVoltar;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField txtValorDoDeposito;
+    private javax.swing.JTextField txtValorDoSaque;
     // End of variables declaration//GEN-END:variables
 }
