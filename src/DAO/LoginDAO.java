@@ -52,9 +52,7 @@ public class LoginDAO {
         double saldoBitcoin = Double.parseDouble(resultado.getString("saldo_bitcoin"));
         double saldoEthereum = Double.parseDouble(resultado.getString("saldo_ethereum"));
         double saldoRipple = Double.parseDouble(resultado.getString("saldo_ripple"));
-        
-        conn.close();
+   
         return new Carteira(saldoReal, saldoBitcoin, saldoEthereum, saldoRipple);
-        
     }
 }

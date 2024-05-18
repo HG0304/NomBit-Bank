@@ -164,7 +164,8 @@ public class MenuFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btConsoltarSaldoActionPerformed
 
     private void btDepositarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDepositarActionPerformed
-        // TODO add your handling code here:
+        DepositoFrame df = new DepositoFrame(investidor);
+        df.setVisible(true);
     }//GEN-LAST:event_btDepositarActionPerformed
 
     private void btBuyCripActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuyCripActionPerformed

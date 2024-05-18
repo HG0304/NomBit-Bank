@@ -40,17 +40,24 @@ public class ControllerSaldo {
     }
     
     public void consultarSaldo(){
-        System.out.println("teste3");
         Conexao conexao = new Conexao();
         try{
             Connection conn = conexao.getConnection();
             LoginDAO dao = new LoginDAO(conn);
             Carteira res = dao.getSaldo(investidor);
+            
+            String mensagem = String.format(
+                "Saldo da conta em Real: R$ %.2f\n" +
+                "Saldo da conta em Bitcoin: R$ %.2f\n" +
+                "Saldo da conta em Ethereum: R$ %.2f\n" +
+                "Saldo da conta em Ripple: R$ %.2f",
+                res.getSaldoReal(),
+                res.getSaldoBitcoin(),
+                res.getSaldoEthereum(),
+                res.getSaldoRipple()
+            );
 
-            System.out.println("saldo em real: " + res.getSaldoReal());
-            System.out.println("saldo em bitcoin: " + res.getSaldoBitcoin());
-            System.out.println("saldo em ethereum: " + res.getSaldoEthereum());
-            System.out.println("saldo em ripple: " + res.getSaldoRipple());
+            JOptionPane.showMessageDialog(null, mensagem, "Aviso", JOptionPane.INFORMATION_MESSAGE);
             
         } catch(SQLException e){
             JOptionPane.showMessageDialog(view, "Erro: " + e.getMessage());

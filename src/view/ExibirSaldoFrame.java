@@ -137,24 +137,10 @@ public class ExibirSaldoFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConfirmarActionPerformed
-        System.out.println("teste1");
         Boolean senhaCorreta = control.confirmarSenha();
-        System.out.println("2");
-        if(senhaCorreta){
-            
-            String mensagem = String.format(
-                "Saldo da conta em Real: R$ %.2f\n" +
-                "Saldo da conta em Bitcoin: R$ %.2f\n" +
-                "Saldo da conta em Ethereum: R$ %.2f\n" +
-                "Saldo da conta em Ripple: R$ %.2f",
-                investidor.getCarteira().getSaldoReal(),
-                investidor.getCarteira().getSaldoBitcoin(),
-                investidor.getCarteira().getSaldoEthereum(),
-                investidor.getCarteira().getSaldoRipple()
-            );
-
-            JOptionPane.showMessageDialog(null, mensagem, "Aviso", JOptionPane.INFORMATION_MESSAGE);
-
+        
+        if(senhaCorreta){          
+            control.consultarSaldo();
         }
         else{
             JOptionPane.showMessageDialog(this, "Senha incorreta");
