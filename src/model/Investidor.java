@@ -11,15 +11,15 @@ package model;
 public class Investidor extends Pessoa{
     private String senha;
     private Carteira carteira;
-
+    
     public String getSenha() {
         return senha;
     }
-
+    
     public void setSenha(String senha) {
         this.senha = senha;
     }
-
+    
     public Investidor(String Nome, String senha, String CPF) {
         super(Nome, CPF);
         this.senha = senha;

@@ -4,6 +4,7 @@
  */
 package view;
 
+import controller.ControllerSaldo;
 import model.Investidor;
 
 /**
@@ -11,14 +12,21 @@ import model.Investidor;
  * @author unifhnomura
  */
 public class MenuFrame extends javax.swing.JFrame {
-
+    private ControllerSaldo control;
+    private Investidor investidor;
     /**
      * Creates new form MenuFrame
      */
     public MenuFrame(Investidor investidor) {
         initComponents();
-        
+        this.investidor = investidor;
     }
+
+    public MenuFrame() {
+        initComponents();
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -150,7 +158,9 @@ public class MenuFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btConsultarExtratoActionPerformed
 
     private void btConsoltarSaldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConsoltarSaldoActionPerformed
-        // TODO add your handling code here:
+        SenhaFrame sf = new SenhaFrame(investidor);
+        sf.setVisible(true);
+        //this.dispose();
     }//GEN-LAST:event_btConsoltarSaldoActionPerformed
 
     private void btDepositarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDepositarActionPerformed

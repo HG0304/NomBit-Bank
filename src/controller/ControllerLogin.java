@@ -35,9 +35,6 @@ public class ControllerLogin {
             ResultSet res = dao.consultar(investidor);
             
             if(res.next()){
-                
-                JOptionPane.showMessageDialog(view, "Login feito!", "Aviso!", JOptionPane.INFORMATION_MESSAGE);
-                
                 String nome = res.getString("nome");
                 String cpf = res.getString("cpf");
                 String senha = res.getString("senha");

@@ -157,8 +157,6 @@ public class LoginFrame extends javax.swing.JFrame {
 
     private void btLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLoginActionPerformed
         control.loginInvestidor();
-        //MenuFrame mf = new MenuFrame();
-        //mf.setVisible(true);
     }//GEN-LAST:event_btLoginActionPerformed
 
     private void txtCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCpfActionPerformed
