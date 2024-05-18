@@ -7,7 +7,7 @@ package controller;
 import DAO.Conexao;
 import DAO.LoginDAO;
 import model.Investidor;
-import view.SenhaFrame;
+import view.ExibirSaldoFrame;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -21,10 +21,10 @@ import model.Investidor;
  * @author hugoe
  */
 public class ControllerSaldo {
-    private SenhaFrame view;
+    private ExibirSaldoFrame view;
     private Investidor investidor;
 
-    public ControllerSaldo(SenhaFrame view, Investidor investidor) {
+    public ControllerSaldo(ExibirSaldoFrame view, Investidor investidor) {
         this.view = view;
         this.investidor = investidor;
     }

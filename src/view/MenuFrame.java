@@ -158,7 +158,7 @@ public class MenuFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btConsultarExtratoActionPerformed
 
     private void btConsoltarSaldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConsoltarSaldoActionPerformed
-        SenhaFrame sf = new SenhaFrame(investidor);
+        ExibirSaldoFrame sf = new ExibirSaldoFrame(investidor);
         sf.setVisible(true);
         //this.dispose();
     }//GEN-LAST:event_btConsoltarSaldoActionPerformed
