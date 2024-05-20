@@ -40,7 +40,7 @@ public class MenuFrame extends javax.swing.JFrame {
         btConsultarExtrato = new javax.swing.JButton();
         btConsoltarSaldo = new javax.swing.JButton();
         btDepositar = new javax.swing.JButton();
-        btBuyCrip = new javax.swing.JButton();
+        btBuyCript = new javax.swing.JButton();
         btSacar = new javax.swing.JButton();
         btSellCrip = new javax.swing.JButton();
         btAttCrip = new javax.swing.JButton();
@@ -69,11 +69,11 @@ public class MenuFrame extends javax.swing.JFrame {
             }
         });
 
-        btBuyCrip.setText("Comprar criptos");
-        btBuyCrip.setActionCommand("");
-        btBuyCrip.addActionListener(new java.awt.event.ActionListener() {
+        btBuyCript.setText("Comprar criptos");
+        btBuyCript.setActionCommand("");
+        btBuyCript.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btBuyCripActionPerformed(evt);
+                btBuyCriptActionPerformed(evt);
             }
         });
 
@@ -109,7 +109,7 @@ public class MenuFrame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap(40, Short.MAX_VALUE)
-                        .addComponent(btBuyCrip, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btBuyCript, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(41, 41, 41)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -146,7 +146,7 @@ public class MenuFrame extends javax.swing.JFrame {
                     .addComponent(btDepositar)
                     .addComponent(btSellCrip))
                 .addGap(29, 29, 29)
-                .addComponent(btBuyCrip)
+                .addComponent(btBuyCript)
                 .addContainerGap(29, Short.MAX_VALUE))
         );
 
@@ -160,7 +160,6 @@ public class MenuFrame extends javax.swing.JFrame {
     private void btConsoltarSaldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConsoltarSaldoActionPerformed
         ExibirSaldoFrame sf = new ExibirSaldoFrame(investidor);
         sf.setVisible(true);
-        //this.dispose();
     }//GEN-LAST:event_btConsoltarSaldoActionPerformed
 
     private void btDepositarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDepositarActionPerformed
@@ -168,9 +167,10 @@ public class MenuFrame extends javax.swing.JFrame {
         df.setVisible(true);
     }//GEN-LAST:event_btDepositarActionPerformed
 
-    private void btBuyCripActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuyCripActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btBuyCripActionPerformed
+    private void btBuyCriptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuyCriptActionPerformed
+        BuyCriptFrame bcf = new BuyCriptFrame(investidor);
+        bcf.setVisible(true);
+    }//GEN-LAST:event_btBuyCriptActionPerformed
 
     private void btSacarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSacarActionPerformed
         SaqueFrame sf = new SaqueFrame(investidor);
@@ -185,44 +185,10 @@ public class MenuFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btAttCripActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(MenuFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(MenuFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(MenuFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(MenuFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new MenuFrame().setVisible(true);
-//            }
-//        });
-//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAttCrip;
-    private javax.swing.JButton btBuyCrip;
+    private javax.swing.JButton btBuyCript;
     private javax.swing.JButton btConsoltarSaldo;
     private javax.swing.JButton btConsultarExtrato;
     private javax.swing.JButton btDepositar;
