@@ -54,9 +54,8 @@ public class ControllerExtrato {
         
         for (String transacao : transacoesList) {
             extratoBuilder.append(transacao).append("\n");
-            System.out.println(transacao);
         }
-        System.out.println("teste");
+
         // Atualizar a interface gráfica com o extrato completo
         view.getTxtExtrato().setText(extratoBuilder.toString());
 

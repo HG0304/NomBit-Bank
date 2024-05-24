@@ -226,14 +226,14 @@ public class ExtratoFrame extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(50, 50, 50)
-                        .addComponent(txtExtrato, javax.swing.GroupLayout.PREFERRED_SIZE, 764, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtExtrato, javax.swing.GroupLayout.DEFAULT_SIZE, 764, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(388, 388, 388)
                         .addComponent(jLabel1))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(397, 397, 397)
                         .addComponent(btVoltar)))
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addGap(56, 56, 56))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -267,7 +267,7 @@ public class ExtratoFrame extends javax.swing.JFrame {
 
         if(senhaCorreta){
             jTabbedPane1.setSelectedIndex(1);
-            // this.getTxtExtrato().setEditable(false);
+            this.getTxtExtrato().setEditable(false);
             System.out.println("botao");
             control.getExtrato();
         }
