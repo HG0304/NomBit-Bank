@@ -4,25 +4,40 @@
  */
 package model;
 
+import java.util.Random;
+
 /**
  *
  * @author unifhnomura
  */
 public class Bitcoin extends Moedas{
-        double valorDeMercado;
-
-    public double getValorDeMercado() {
-        return valorDeMercado;
-    }
-
-    public void setValorDeMercado(double valorDeMercado) {
-        this.valorDeMercado = valorDeMercado;
-    }
-
-    public Bitcoin(double valorDeMercado) {
-        super("Bitcoin", valorDeMercado);
-        this.valorDeMercado = valorDeMercado;
+    public Bitcoin(double valor) {
+        super("Bitcoin", valor);
     }
     
+    public double valorTaxadoDeCompra(double valor){
+        double taxa = 0;
+        
+        // 2%
+        taxa = valor * 0.98;
+        return taxa;
+    }
     
+    public double valorTaxadoDeVenda(double valor){
+        double taxa = 0;
+        
+        // 3%
+        taxa = valor * 0.97;
+        return taxa;
+    }
+    
+    public double taxaDeCompra (double valor){
+        double taxa = valor * 0.02;
+        return taxa;
+    }
+    
+    public double taxaDeVenda (double valor){
+        double taxa = valor * 0.03;
+        return taxa;
+    }
 }

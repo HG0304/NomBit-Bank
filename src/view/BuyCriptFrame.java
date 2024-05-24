@@ -58,11 +58,11 @@ public class BuyCriptFrame extends javax.swing.JFrame {
     }
 
     public JButton getBtConformar() {
-        return btConformar;
+        return btComprar;
     }
 
     public void setBtConformar(JButton btConformar) {
-        this.btConformar = btConformar;
+        this.btComprar = btConformar;
     }
 
     public JButton getBtVoltar() {
@@ -168,6 +168,22 @@ public class BuyCriptFrame extends javax.swing.JFrame {
     public void setTxtSenha(JTextField txtSenha) {
         this.txtSenha = txtSenha;
     }
+
+    public JButton getBtComprar() {
+        return btComprar;
+    }
+
+    public void setBtComprar(JButton btComprar) {
+        this.btComprar = btComprar;
+    }
+
+    public JTextField getTxtQuantidadeCript() {
+        return txtQuantidadeCript;
+    }
+
+    public void setTxtQuantidadeCript(JTextField txtQuantidadeCript) {
+        this.txtQuantidadeCript = txtQuantidadeCript;
+    }
     
     
     /**
@@ -197,7 +213,9 @@ public class BuyCriptFrame extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btVoltar = new javax.swing.JButton();
         cbComprarCripto = new javax.swing.JComboBox<>();
-        btConformar = new javax.swing.JButton();
+        btComprar = new javax.swing.JButton();
+        txtQuantidadeCript = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
 
         opBitcoin.setText("Bitcoin");
         jPopupMenu1.add(opBitcoin);
@@ -255,7 +273,7 @@ public class BuyCriptFrame extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(65, 65, 65)))
-                .addContainerGap(97, Short.MAX_VALUE))
+                .addContainerGap(124, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -285,12 +303,15 @@ public class BuyCriptFrame extends javax.swing.JFrame {
 
         cbComprarCripto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Bitcoin", "Ethereum", "Ripple"}));
 
-        btConformar.setText("Confirmar");
-        btConformar.addActionListener(new java.awt.event.ActionListener() {
+        btComprar.setText("Comprar");
+        btComprar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btConformarActionPerformed(evt);
+                btComprarActionPerformed(evt);
             }
         });
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel3.setText("Quero comprar (em R$): ");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -298,15 +319,18 @@ public class BuyCriptFrame extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(55, 55, 55)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(cbComprarCripto, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 409, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btConformar, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(cbComprarCripto, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel1))
-                .addContainerGap(54, Short.MAX_VALUE))
+                            .addComponent(jLabel3))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtQuantidadeCript)
+                            .addComponent(btComprar, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE))))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -315,11 +339,15 @@ public class BuyCriptFrame extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(cbComprarCripto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btConformar)
-                    .addComponent(btVoltar))
-                .addContainerGap(149, Short.MAX_VALUE))
+                    .addComponent(txtQuantidadeCript, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addGap(34, 34, 34)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btVoltar)
+                    .addComponent(btComprar))
+                .addContainerGap(107, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("tab1", jPanel1);
@@ -329,13 +357,23 @@ public class BuyCriptFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btConformarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConformarActionPerformed
+    private void btComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btComprarActionPerformed
         int opcao =  cbComprarCripto.getSelectedIndex();
         // 0 -> bitcoin
         // 1 -> ehthereum
         // 2 -> ripple
-
-    }//GEN-LAST:event_btConformarActionPerformed
+        switch (opcao){
+                case 0: // bitcoin
+                    control.buyBitcoin();
+                    break;
+                case 1:  // ethereum
+                    
+                    break;
+                case 2:  // ripple
+                    
+                    break;   
+        }
+    }//GEN-LAST:event_btComprarActionPerformed
 
     private void btVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVoltarActionPerformed
         this.dispose();
@@ -393,13 +431,14 @@ public class BuyCriptFrame extends javax.swing.JFrame {
 //        });
 //    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btComprar;
     private javax.swing.JButton btConfirmar;
-    private javax.swing.JButton btConformar;
     private javax.swing.JButton btVoltar;
     private javax.swing.JButton btVoltar1;
     private javax.swing.JComboBox<String> cbComprarCripto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPopupMenu jPopupMenu1;
@@ -407,6 +446,7 @@ public class BuyCriptFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem opBitcoin;
     private javax.swing.JMenuItem opEthereum;
     private javax.swing.JMenuItem opRipple;
+    private javax.swing.JTextField txtQuantidadeCript;
     private javax.swing.JTextField txtSenha;
     // End of variables declaration//GEN-END:variables
 }

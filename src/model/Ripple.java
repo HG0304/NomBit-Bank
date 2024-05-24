@@ -4,25 +4,30 @@
  */
 package model;
 
+import java.util.Random;
+
 /**
  *
  * @author unifhnomura
  */
 public class Ripple extends Moedas{
-        double valorDeMercado;
-
-    public double getValorDeMercado() {
-        return valorDeMercado;
-    }
-
-    public void setValorDeMercado(double valorDeMercado) {
-        this.valorDeMercado = valorDeMercado;
-    }
-
-    public Ripple(double valorDeMercado) {
-        super("Ripple", valorDeMercado);
-        this.valorDeMercado = valorDeMercado;
+    public Ripple(double valor) {
+        super("Ripple", valor);
     }
     
+    public double valorTaxadoDeCompra(double valor){
+        double taxa = 0;
+        
+        // 1%
+        taxa = valor * 0.9;
+        return taxa;
+    }
     
+    public double valorTaxadoDeVenda(double valor){
+        double taxa = 0;
+        
+        // 1%
+        taxa = valor * 0.99;
+        return taxa;
+    }
 }

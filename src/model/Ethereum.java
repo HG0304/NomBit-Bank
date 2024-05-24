@@ -4,25 +4,30 @@
  */
 package model;
 
+import java.util.Random;
+
 /**
  *
  * @author unifhnomura
  */
 public class Ethereum extends Moedas{
-        double valorDeMercado;
-
-    public double getValorDeMercado() {
-        return valorDeMercado;
+    public Ethereum(double valor) {
+        super("Ethereum", valor);
     }
 
-    public void setValorDeMercado(double valorDeMercado) {
-        this.valorDeMercado = valorDeMercado;
-    }
-
-    public Ethereum(double valorDeMercado) {
-        super("Ethereum", valorDeMercado);
-        this.valorDeMercado = valorDeMercado;
+    public double valorTaxadoDeCompra(double valor){
+        double taxa = 0;
+        
+        // 1%
+        taxa = valor * 0.99;
+        return taxa;
     }
     
-    
+    public double valorTaxadoDeVenda(double valor){
+        double taxa = 0;
+        
+        // 2%
+        taxa = valor * 0.98;
+        return taxa;
+    }
 }

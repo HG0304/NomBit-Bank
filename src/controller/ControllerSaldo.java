@@ -33,7 +33,7 @@ public class ControllerSaldo {
 
         String senha = view.getTxtSenha().getText();
         
-        if(investidor.getSenha().equalsIgnoreCase(senha) == true){
+        if(investidor.getSenha().equals(senha) == true){
             return true;
         }
         return false;
