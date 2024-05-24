@@ -48,9 +48,9 @@ public class ControllerSaldo {
             
             String mensagem = String.format(
                 "Saldo da conta em Real: R$ %.2f\n" +
-                "Saldo da conta em Bitcoin: R$ %.2f\n" +
-                "Saldo da conta em Ethereum: R$ %.2f\n" +
-                "Saldo da conta em Ripple: R$ %.2f",
+                "Saldo da conta em Bitcoin: BTC %.10f\n" +
+                "Saldo da conta em Ethereum: ETH %.10f\n" +
+                "Saldo da conta em Ripple: XRP %.2f",
                 res.getSaldoReal(),
                 res.getSaldoBitcoin(),
                 res.getSaldoEthereum(),

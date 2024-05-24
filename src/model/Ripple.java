@@ -30,4 +30,14 @@ public class Ripple extends Moedas{
         taxa = valor * 0.99;
         return taxa;
     }
+    
+        public double taxaDeCompra (double valor){
+        double taxa = valor * 0.02;
+        return taxa;
+    }
+    
+    public double taxaDeVenda (double valor){
+        double taxa = valor * 0.03;
+        return taxa;
+    }
 }

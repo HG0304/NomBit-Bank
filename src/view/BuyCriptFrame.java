@@ -367,10 +367,10 @@ public class BuyCriptFrame extends javax.swing.JFrame {
                     control.buyBitcoin();
                     break;
                 case 1:  // ethereum
-                    
+                    control.buyEthereum();
                     break;
                 case 2:  // ripple
-                    
+                    control.buyRipple();
                     break;   
         }
     }//GEN-LAST:event_btComprarActionPerformed
