@@ -135,11 +135,11 @@ public class SellCriptFrame extends javax.swing.JFrame {
     }
 
     public JLabel getLblCotacao() {
-        return lblCotacao;
+        return lblCotacaoBtc;
     }
 
     public void setLblCotacao(JLabel lblCotacao) {
-        this.lblCotacao = lblCotacao;
+        this.lblCotacaoBtc = lblCotacao;
     }
 
     public JTextField getTxtQuantidadeCript() {
@@ -157,6 +157,32 @@ public class SellCriptFrame extends javax.swing.JFrame {
     public void setTxtSenha(JTextField txtSenha) {
         this.txtSenha = txtSenha;
     }
+
+    public JLabel getLblCotacaoBtc() {
+        return lblCotacaoBtc;
+    }
+
+    public void setLblCotacaoBtc(JLabel lblCotacaoBtc) {
+        this.lblCotacaoBtc = lblCotacaoBtc;
+    }
+
+    public JLabel getLblCotacaoEth() {
+        return lblCotacaoEth;
+    }
+
+    public void setLblCotacaoEth(JLabel lblCotacaoEth) {
+        this.lblCotacaoEth = lblCotacaoEth;
+    }
+
+    public JLabel getLblCotacaoXrp() {
+        return lblCotacaoXrp;
+    }
+
+    public void setLblCotacaoXrp(JLabel lblCotacaoXrp) {
+        this.lblCotacaoXrp = lblCotacaoXrp;
+    }
+    
+    
     
     
     /**
@@ -181,7 +207,10 @@ public class SellCriptFrame extends javax.swing.JFrame {
         btComprar = new javax.swing.JButton();
         txtQuantidadeCript = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        lblCotacao = new javax.swing.JLabel();
+        lblCotacaoBtc = new javax.swing.JLabel();
+        lblCotacaoEth = new javax.swing.JLabel();
+        lblCotacaoXrp = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -276,6 +305,9 @@ public class SellCriptFrame extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setText("Quero vender: ");
 
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel4.setText("Cotação atual:");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -284,21 +316,27 @@ public class SellCriptFrame extends javax.swing.JFrame {
                 .addGap(55, 55, 55)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblCotacao, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jLabel4)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(btVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel3))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(btComprar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtQuantidadeCript, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(cbVenderCripto, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(15, Short.MAX_VALUE))))
+                        .addContainerGap(14, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(lblCotacaoXrp, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
+                            .addComponent(lblCotacaoEth, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblCotacaoBtc, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -306,8 +344,14 @@ public class SellCriptFrame extends javax.swing.JFrame {
                 .addGap(29, 29, 29)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblCotacao, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblCotacaoBtc, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblCotacaoEth, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblCotacaoXrp, javax.swing.GroupLayout.DEFAULT_SIZE, 18, Short.MAX_VALUE)
+                .addGap(24, 24, 24)
                 .addComponent(cbVenderCripto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -317,7 +361,7 @@ public class SellCriptFrame extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btVoltar)
                     .addComponent(btComprar))
-                .addGap(20, 20, 20))
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("tab1", jPanel1);
@@ -382,10 +426,13 @@ public class SellCriptFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JLabel lblCotacao;
+    private javax.swing.JLabel lblCotacaoBtc;
+    private javax.swing.JLabel lblCotacaoEth;
+    private javax.swing.JLabel lblCotacaoXrp;
     private javax.swing.JTextField txtQuantidadeCript;
     private javax.swing.JTextField txtSenha;
     // End of variables declaration//GEN-END:variables

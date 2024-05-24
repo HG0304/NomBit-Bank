@@ -4,7 +4,12 @@
  */
 package view;
 
+import DAO.Conexao;
+import DAO.LoginDAO;
 import controller.ControllerSaldo;
+import java.sql.Connection;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
 import model.Investidor;
 
 /**
@@ -13,6 +18,7 @@ import model.Investidor;
  */
 public class MenuFrame extends javax.swing.JFrame {
     private ControllerSaldo control;
+    private LoginDAO contacao;
     private Investidor investidor;
     /**
      * Creates new form MenuFrame
@@ -170,6 +176,52 @@ public class MenuFrame extends javax.swing.JFrame {
     private void btBuyCriptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuyCriptActionPerformed
         BuyCriptFrame bcf = new BuyCriptFrame(investidor);
         bcf.setVisible(true);
+        
+        
+        Conexao conexao = new Conexao();
+        Connection conn = null;
+        
+        double bitcoin;
+        double ethereum;
+        double ripple;
+        
+        try{
+            conn = conexao.getConnection();
+            
+            LoginDAO dao = new LoginDAO(conn);
+            
+            bitcoin = dao.getCotacao("Bitcoin");
+            ethereum = dao.getCotacao("Ethereum");
+            ripple = dao.getCotacao("Ripple");
+            
+            String cotBtc = String.format("BTC: %.2f", bitcoin);
+            
+            String cotEth = String.format("ETH: %.2f", ethereum);
+            
+            String cotXrp = String.format("XRP: %.2f", ripple);
+            
+            bcf.getLblCotacaoBtc().setText(cotBtc);
+            bcf.getLblCotacaoEth().setText(cotEth);
+            bcf.getLblCotacaoXrp().setText(cotXrp);
+        } catch (SQLException e) {
+            if (conn != null) {
+                try {
+                    conn.rollback(); // Reverte a transação em caso de erro
+                } catch (SQLException rollbackEx) {
+                    rollbackEx.printStackTrace();
+                }
+            }
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Erro: " + e.getMessage());
+        } finally {
+            if (conn != null) {
+                try {
+                    conn.close(); // Fecha a conexão
+                } catch (SQLException closeEx) {
+                    closeEx.printStackTrace();
+                }
+            }
+        }
     }//GEN-LAST:event_btBuyCriptActionPerformed
 
     private void btSacarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSacarActionPerformed
@@ -180,6 +232,51 @@ public class MenuFrame extends javax.swing.JFrame {
     private void btSellCripActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSellCripActionPerformed
         SellCriptFrame scf = new SellCriptFrame(investidor);
         scf.setVisible(true);
+        
+        Conexao conexao = new Conexao();
+        Connection conn = null;
+        
+        double bitcoin;
+        double ethereum;
+        double ripple;
+        
+        try{
+            conn = conexao.getConnection();
+            
+            LoginDAO dao = new LoginDAO(conn);
+            
+            bitcoin = dao.getCotacao("Bitcoin");
+            ethereum = dao.getCotacao("Ethereum");
+            ripple = dao.getCotacao("Ripple");
+            
+            String cotBtc = String.format("BTC: %.2f", bitcoin);
+            
+            String cotEth = String.format("ETH: %.2f", ethereum);
+            
+            String cotXrp = String.format("XRP: %.2f", ripple);
+            
+            scf.getLblCotacaoBtc().setText(cotBtc);
+            scf.getLblCotacaoEth().setText(cotEth);
+            scf.getLblCotacaoXrp().setText(cotXrp);
+        } catch (SQLException e) {
+            if (conn != null) {
+                try {
+                    conn.rollback(); // Reverte a transação em caso de erro
+                } catch (SQLException rollbackEx) {
+                    rollbackEx.printStackTrace();
+                }
+            }
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Erro: " + e.getMessage());
+        } finally {
+            if (conn != null) {
+                try {
+                    conn.close(); // Fecha a conexão
+                } catch (SQLException closeEx) {
+                    closeEx.printStackTrace();
+                }
+            }
+        }
     }//GEN-LAST:event_btSellCripActionPerformed
 
     private void btAttCripActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAttCripActionPerformed
