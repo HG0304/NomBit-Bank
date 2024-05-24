@@ -6,6 +6,16 @@ import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import model.Carteira;
 import model.Investidor;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -72,6 +82,79 @@ public class LoginDAO {
         } else {
             return 0.0;
         }
+    }
+
+    public List<String> getTransacoes(String cpf) throws SQLException {
+    // Consulta SQL para selecionar transações de um investidor específico
+    String sqlTransacoes = "SELECT cpf, tipo_moeda, valor, data_hora, tipo_transacao, taxa, cotacao " +
+                           "FROM transacoes " +
+                           "WHERE cpf = ?";
+
+    // Preparar a declaração SQL
+    PreparedStatement pstmtTransacoes = conn.prepareStatement(sqlTransacoes);
+    pstmtTransacoes.setString(1, cpf);  // Define o valor do parâmetro cpf
+    ResultSet resultadoTransacoes = pstmtTransacoes.executeQuery();
+
+    // Lista para armazenar as transações formatadas
+    List<String> transacoesList = new ArrayList<>();
+
+    // Processar cada linha do resultado da consulta
+    while (resultadoTransacoes.next()) {
+        String tipoMoeda = resultadoTransacoes.getString("tipo_moeda");
+        double valor = resultadoTransacoes.getDouble("valor");
+        Timestamp dataHora = resultadoTransacoes.getTimestamp("data_hora");
+        String tipoTransacao = resultadoTransacoes.getString("tipo_transacao");
+        double taxa = resultadoTransacoes.getDouble("taxa");
+        double cotacao = resultadoTransacoes.getDouble("cotacao");
+
+        // Formatar a data e hora
+        String formattedDataHora = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format(dataHora);
+
+        // Formatar a transação
+        String formattedTransacao = String.format("%s %s %.2f %s CT: %.2f TX: %.2f",
+                                                  formattedDataHora, tipoTransacao, valor, tipoMoeda, cotacao, taxa);
+
+        // Obter os saldos atuais da carteira do investidor
+        Map<String, Double> saldos = getSaldo(cpf);
+        String formattedSaldo = String.format("REAL: %.2f BTC: %.8f ETH: %.8f XRP: %.8f",
+                                              saldos.get("REAL"), saldos.get("BTC"),
+                                              saldos.get("ETH"), saldos.get("XRP"));
+
+        // Combinar a transação formatada com os saldos
+        transacoesList.add(formattedTransacao + " " + formattedSaldo);
+    }
+
+    // Fechar o ResultSet e o PreparedStatement
+    resultadoTransacoes.close();
+    pstmtTransacoes.close();
+
+    // Retornar a lista de transações formatadas
+    return transacoesList;
+}
+
+    // Placeholder para o método de obter os saldos atuais de um investidor
+    private Map<String, Double> getSaldo(String cpf) throws SQLException {
+        // Consulta SQL para obter os saldos da carteira do investidor
+        String sql = "SELECT saldo_real, saldo_bitcoin, saldo_ethereum, saldo_ripple FROM carteiras WHERE cpf = ?";
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+        pstmt.setString(1, cpf);
+        ResultSet resultado = pstmt.executeQuery();
+
+        // Map para armazenar os saldos
+        Map<String, Double> saldos = new HashMap<>();
+        if (resultado.next()) {
+            saldos.put("REAL", resultado.getDouble("saldo_real"));
+            saldos.put("BTC", resultado.getDouble("saldo_bitcoin"));
+            saldos.put("ETH", resultado.getDouble("saldo_ethereum"));
+            saldos.put("XRP", resultado.getDouble("saldo_ripple"));
+        }
+
+        // Fechar o ResultSet e o PreparedStatement
+        resultado.close();
+        pstmt.close();
+
+        // Retornar os saldos
+        return saldos;
     }
 
 

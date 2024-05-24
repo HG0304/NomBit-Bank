@@ -160,7 +160,9 @@ public class MenuFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btConsultarExtratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConsultarExtratoActionPerformed
-        // TODO add your handling code here:
+        ExtratoFrame ef = new ExtratoFrame(investidor);
+        ef.getjTabbedPane1().setSelectedIndex(0);
+        ef.setVisible(true);
     }//GEN-LAST:event_btConsultarExtratoActionPerformed
 
     private void btConsoltarSaldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConsoltarSaldoActionPerformed
