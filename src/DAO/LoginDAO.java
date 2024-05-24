@@ -55,4 +55,24 @@ public class LoginDAO {
    
         return new Carteira(saldoReal, saldoBitcoin, saldoEthereum, saldoRipple);
     }
+    
+    public double getCotacao(String moeda) throws SQLException {
+        String sql = "SELECT c1.cotacao FROM cotacoes c1 WHERE c1.moeda = ? AND c1.data_hora = (\n" +
+                     "SELECT MAX(c2.data_hora)\n" +
+                     "FROM cotacoes c2\n" +
+                     "WHERE c2.moeda = c1.moeda);";
+
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+        pstmt.setString(1, moeda);  // Define o valor do parâmetro de moeda
+        ResultSet resultado = pstmt.executeQuery();
+
+        if (resultado.next()) {
+            double cotacao = resultado.getDouble("cotacao");
+            return cotacao;
+        } else {
+            return 0.0;
+        }
+    }
+
+
 }

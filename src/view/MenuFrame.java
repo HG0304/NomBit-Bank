@@ -84,7 +84,7 @@ public class MenuFrame extends javax.swing.JFrame {
             }
         });
 
-        btSellCrip.setText("Vender crptos");
+        btSellCrip.setText("Vender criptos");
         btSellCrip.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btSellCripActionPerformed(evt);
@@ -178,7 +178,8 @@ public class MenuFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btSacarActionPerformed
 
     private void btSellCripActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSellCripActionPerformed
-        // TODO add your handling code here:
+        SellCriptFrame scf = new SellCriptFrame(investidor);
+        scf.setVisible(true);
     }//GEN-LAST:event_btSellCripActionPerformed
 
     private void btAttCripActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAttCripActionPerformed

@@ -61,9 +61,6 @@ public class ControllerBuyCript {
 
             res.setSaldoReal(novoSaldo);
             
-            //////////////////////////////////////////////////////////////////////
-            // logica para comprar cripto
-            
             double cotacao = dao.getCotacao("Bitcoin");
             boolean cotacaoExiste = true;
             if(cotacao == 0){

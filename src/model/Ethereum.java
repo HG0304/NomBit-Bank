@@ -32,12 +32,12 @@ public class Ethereum extends Moedas{
     }
     
         public double taxaDeCompra (double valor){
-        double taxa = valor * 0.02;
+        double taxa = valor * 0.01;
         return taxa;
     }
     
     public double taxaDeVenda (double valor){
-        double taxa = valor * 0.03;
+        double taxa = valor * 0.02;
         return taxa;
     }
 }
