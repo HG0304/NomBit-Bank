@@ -28,7 +28,6 @@ public class Bitcoin extends Moedas{
         
         // 3%
         valor = valor * this.getValor();
-        System.out.println("this.getValor() " + this.getValor());
         taxa = valor * 0.97;
         return taxa;
     }

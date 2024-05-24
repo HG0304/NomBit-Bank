@@ -360,10 +360,10 @@ public class SellCriptFrame extends javax.swing.JFrame {
             control.sellBitcoin();
             break;
             case 1:  // ethereum
-            // control.sellEthereum();
+            control.sellEthereum();
             break;
             case 2:  // ripple
-            // control.sellRipple();
+            control.sellRipple();
             break;
         }
     }//GEN-LAST:event_btComprarActionPerformed

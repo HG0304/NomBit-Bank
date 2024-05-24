@@ -27,17 +27,18 @@ public class Ethereum extends Moedas{
         double taxa = 0;
         
         // 2%
+        valor = valor * this.getValor();
         taxa = valor * 0.98;
         return taxa;
     }
     
-        public double taxaDeCompra (double valor){
+    public double taxaDeCompra (double valor){
         double taxa = valor * 0.01;
         return taxa;
     }
     
     public double taxaDeVenda (double valor){
-        double taxa = valor * 0.02;
+        double taxa = valor * this.getValor() * 0.02;
         return taxa;
     }
 }

@@ -27,17 +27,18 @@ public class Ripple extends Moedas{
         double taxa = 0;
         
         // 1%
+        valor = valor * this.getValor();
         taxa = valor * 0.99;
         return taxa;
     }
     
-        public double taxaDeCompra (double valor){
+    public double taxaDeCompra (double valor){
         double taxa = valor * 0.01;
         return taxa;
     }
     
     public double taxaDeVenda (double valor){
-        double taxa = valor * 0.01;
+        double taxa = valor * this.getValor() * 0.01;
         return taxa;
     }
 }
