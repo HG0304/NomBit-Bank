@@ -63,17 +63,22 @@ public class ControllerBuyCript {
             
             //////////////////////////////////////////////////////////////////////
             // logica para comprar cripto
-            Random random = new Random();
             
-            // valor inial será entre 120k e 360k pq é a cotacao max e min do ultimo ano
-            double min = 120000;
-            double max = 360000;
-            double valorDeMercado = min + (max - min) * random.nextDouble();
-            Bitcoin btc = new Bitcoin(valorDeMercado);
-            
+            double cotacao = dao.getCotacao("Bitcoin");
+            boolean cotacaoExiste = true;
+            if(cotacao == 0){
+                Random random = new Random();
+
+                // valor inial será entre 120k e 360k pq é a cotacao max e min do ultimo ano
+                double min = 120000;
+                double max = 360000;
+                cotacao = min + (max - min) * random.nextDouble();
+                cotacaoExiste = false;
+            }
+            Bitcoin btc = new Bitcoin(cotacao);
             
             double valorTaxadoDeTransacao = btc.valorTaxadoDeCompra(quantidade); 
-            double taxaDeCambio = 1 / btc.getValor(); 
+            double taxaDeCambio = 1 / btc.getValor();
             double quantidadeDeCripto = valorTaxadoDeTransacao * taxaDeCambio;
             
             double valor = res.getSaldoBitcoin() + quantidadeDeCripto;
@@ -83,7 +88,7 @@ public class ControllerBuyCript {
             String updateQuery = "UPDATE carteiras SET saldo_real = ?, saldo_bitcoin = ? WHERE cpf = ?";
             try (PreparedStatement pstmt = conn.prepareStatement(updateQuery)) {
                 pstmt.setDouble(1, res.getSaldoReal());
-                pstmt.setDouble(2, quantidadeDeCripto);
+                pstmt.setDouble(2, res.getSaldoBitcoin());
                 pstmt.setString(3, investidor.getCPF());
                 pstmt.executeUpdate();
             }
@@ -98,15 +103,31 @@ public class ControllerBuyCript {
                 pstmt.setDouble(5, btc.taxaDeCompra(quantidade));
                 pstmt.executeUpdate();
             }
-
-            conn.commit(); // Confirma a transação
-
-            JOptionPane.showMessageDialog(view, String.format(
-                    "Compra realizada com sucesso!\nSaldo atualizado: \nR$ %.2f\nBTC %.10f",
+            
+            
+            String insertCotacao = "INSERT INTO cotacoes (moeda, cotacao) VALUES (?, ?)";
+            try (PreparedStatement pstmt = conn.prepareStatement(insertCotacao)){
+                pstmt.setString(1, "Bitcoin");
+                pstmt.setDouble(2, cotacao);
+                pstmt.executeUpdate();
+            }
+            
+            
+            String mensagem = String.format(
+                    "Compra realizada com sucesso!\n" +
+                    "Valor comprado BTC: %.10f\n" +
+                    "Saldo atualizado: \n" +
+                    "R$ %.2f\n" +
+                    "BTC %.10f",
+                    quantidadeDeCripto,
                     res.getSaldoReal(),
                     res.getSaldoBitcoin()
-            ));
-
+                    );
+            
+            JOptionPane.showMessageDialog(view, mensagem, "Aviso", JOptionPane.INFORMATION_MESSAGE);
+            
+            conn.commit(); // Confirma a transação
+                        
         } catch (SQLException e) {
             if (conn != null) {
                 try {
@@ -152,15 +173,21 @@ public class ControllerBuyCript {
 
             res.setSaldoReal(novoSaldo);
             
+            double cotacao = dao.getCotacao("Ethereum");
+            boolean cotacaoExiste = true;
+            if(cotacao == 0){
+                Random random = new Random();
+            
+                // valor inial será entre 7.6k e 20k pq é a cotacao max e min do ultimo ano
+                double min = 7600;
+                double max = 20000;
+                cotacao = min + (max - min) * random.nextDouble();
+                cotacaoExiste = false;
+            }
             //////////////////////////////////////////////////////////////////////
             // logica para comprar cripto
-            Random random = new Random();
             
-            // valor inial será entre 7.6k e 20k pq é a cotacao max e min do ultimo ano
-            double min = 7600;
-            double max = 20000;
-            double valorDeMercado = min + (max - min) * random.nextDouble();
-            Ethereum eth = new Ethereum(valorDeMercado);
+            Ethereum eth = new Ethereum(cotacao);
             
             
             double valorTaxadoDeTransacao = eth.valorTaxadoDeCompra(quantidade); 
@@ -174,7 +201,7 @@ public class ControllerBuyCript {
             String updateQuery = "UPDATE carteiras SET saldo_real = ?, saldo_ethereum = ? WHERE cpf = ?";
             try (PreparedStatement pstmt = conn.prepareStatement(updateQuery)) {
                 pstmt.setDouble(1, res.getSaldoReal());
-                pstmt.setDouble(2, quantidadeDeCripto);
+                pstmt.setDouble(2, res.getSaldoEthereum());
                 pstmt.setString(3, investidor.getCPF());
                 pstmt.executeUpdate();
             }
@@ -190,13 +217,27 @@ public class ControllerBuyCript {
                 pstmt.executeUpdate();
             }
 
-            conn.commit(); // Confirma a transação
-
-            JOptionPane.showMessageDialog(view, String.format(
-                    "Compra realizada com sucesso!\nSaldo atualizado: \nR$ %.2f\nETH %.10f",
+            String insertCotacao = "INSERT INTO cotacoes (moeda, cotacao) VALUES (?, ?)";
+            try (PreparedStatement pstmt = conn.prepareStatement(insertCotacao)){
+                pstmt.setString(1, "Ethereum");
+                pstmt.setDouble(2, cotacao);
+                pstmt.executeUpdate();
+            }
+            
+            String mensagem = String.format(
+                    "Compra realizada com sucesso!\n" +
+                    "Valor comprado ETH: %.10f\n" +
+                    "Saldo atualizado: \n" +
+                    "R$ %.2f\n" +
+                    "ETH %.10f",
+                    quantidadeDeCripto,
                     res.getSaldoReal(),
                     res.getSaldoEthereum()
-            ));
+                    );
+            
+            JOptionPane.showMessageDialog(view, mensagem, "Aviso", JOptionPane.INFORMATION_MESSAGE);
+            
+            conn.commit(); // Confirma a transação
 
         } catch (SQLException e) {
             if (conn != null) {
@@ -243,16 +284,18 @@ public class ControllerBuyCript {
 
             res.setSaldoReal(novoSaldo);
             
-            //////////////////////////////////////////////////////////////////////
-            // logica para comprar cripto
-            Random random = new Random();
-            
-            // valor inial será entre 2.2 e 4 pq é a cotacao max e min do ultimo ano
-            double min = 2.2;
-            double max = 4;
-            double valorDeMercado = min + (max - min) * random.nextDouble();
-            Ripple xrp = new Ripple(valorDeMercado);
-            
+            double cotacao = dao.getCotacao("Ripple");
+            boolean cotacaoExiste = true;
+            if(cotacao == 0){
+                Random random = new Random();
+                
+                // valor inial será entre 2.2 e 4 pq é a cotacao max e min do ultimo ano
+                double min = 2.2;
+                double max = 4;
+                cotacao = min + (max - min) * random.nextDouble();
+                cotacaoExiste = false;
+            }
+            Ripple xrp = new Ripple(cotacao);
             
             double valorTaxadoDeTransacao = xrp.valorTaxadoDeCompra(quantidade); 
             double taxaDeCambio = 1 / xrp.getValor(); 
@@ -265,7 +308,7 @@ public class ControllerBuyCript {
             String updateQuery = "UPDATE carteiras SET saldo_real = ?, saldo_ripple = ? WHERE cpf = ?";
             try (PreparedStatement pstmt = conn.prepareStatement(updateQuery)) {
                 pstmt.setDouble(1, res.getSaldoReal());
-                pstmt.setDouble(2, quantidadeDeCripto);
+                pstmt.setDouble(2, res.getSaldoRipple());
                 pstmt.setString(3, investidor.getCPF());
                 pstmt.executeUpdate();
             }
@@ -281,13 +324,27 @@ public class ControllerBuyCript {
                 pstmt.executeUpdate();
             }
 
-            conn.commit(); // Confirma a transação
-
-            JOptionPane.showMessageDialog(view, String.format(
-                    "Compra realizada com sucesso!\nSaldo atualizado: \nR$ %.2f\nXRP %.2f",
+            String insertCotacao = "INSERT INTO cotacoes (moeda, cotacao) VALUES (?, ?)";
+            try (PreparedStatement pstmt = conn.prepareStatement(insertCotacao)){
+                pstmt.setString(1, "Ripple");
+                pstmt.setDouble(2, cotacao);
+                pstmt.executeUpdate();
+            }
+            
+            String mensagem = String.format(
+                    "Compra realizada com sucesso!\n" +
+                    "Valor comprado XRP: %.2f\n" +
+                    "Saldo atualizado: \n" +
+                    "R$ %.2f\n" +
+                    "XRP %.2f",
+                    quantidadeDeCripto,
                     res.getSaldoReal(),
                     res.getSaldoRipple()
-            ));
+                    );
+            
+            JOptionPane.showMessageDialog(view, mensagem, "Aviso", JOptionPane.INFORMATION_MESSAGE);
+            
+            conn.commit(); // Confirma a transação
 
         } catch (SQLException e) {
             if (conn != null) {
