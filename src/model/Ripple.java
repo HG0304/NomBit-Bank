@@ -10,7 +10,7 @@ import java.util.Random;
  *
  * @author unifhnomura
  */
-public class Ripple extends Moedas{
+public class Ripple extends Moedas implements tarifacao{
     public Ripple(double valor) {
         super("Ripple", valor);
     }

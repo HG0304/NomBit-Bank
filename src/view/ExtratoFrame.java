@@ -139,8 +139,9 @@ public class ExtratoFrame extends javax.swing.JFrame {
         btConfirmar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        txtExtrato = new javax.swing.JTextArea();
         btVoltar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtExtrato = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -207,9 +208,6 @@ public class ExtratoFrame extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setText("Seu extrato:");
 
-        txtExtrato.setColumns(20);
-        txtExtrato.setRows(5);
-
         btVoltar.setText("Voltar");
         btVoltar.setActionCommand("");
         btVoltar.addActionListener(new java.awt.event.ActionListener() {
@@ -218,6 +216,10 @@ public class ExtratoFrame extends javax.swing.JFrame {
             }
         });
 
+        txtExtrato.setColumns(20);
+        txtExtrato.setRows(5);
+        jScrollPane1.setViewportView(txtExtrato);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -225,15 +227,15 @@ public class ExtratoFrame extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(txtExtrato, javax.swing.GroupLayout.DEFAULT_SIZE, 764, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(388, 388, 388)
                         .addComponent(jLabel1))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(397, 397, 397)
-                        .addComponent(btVoltar)))
-                .addGap(56, 56, 56))
+                        .addComponent(btVoltar))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(74, 74, 74)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 725, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(71, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -241,8 +243,8 @@ public class ExtratoFrame extends javax.swing.JFrame {
                 .addGap(43, 43, 43)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(txtExtrato, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addComponent(btVoltar)
                 .addGap(20, 20, 20))
         );
@@ -280,9 +282,7 @@ public class ExtratoFrame extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btVoltarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+ 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btConfirmar;
@@ -292,6 +292,7 @@ public class ExtratoFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextArea txtExtrato;
     private javax.swing.JTextField txtSenha;

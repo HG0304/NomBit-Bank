@@ -10,7 +10,7 @@ import java.util.Random;
  *
  * @author unifhnomura
  */
-public class Ethereum extends Moedas{
+public class Ethereum extends Moedas implements tarifacao{
     public Ethereum(double valor) {
         super("Ethereum", valor);
     }

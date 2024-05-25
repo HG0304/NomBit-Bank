@@ -10,7 +10,7 @@ import java.util.Random;
  *
  * @author unifhnomura
  */
-public class Bitcoin extends Moedas{
+public class Bitcoin extends Moedas implements tarifacao{
     public Bitcoin(double valor) {
         super("Bitcoin", valor);
     }
