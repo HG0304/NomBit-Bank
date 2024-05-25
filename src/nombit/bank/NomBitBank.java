@@ -10,7 +10,7 @@ import view.BankFrame;
  * Classe principal para a aplicação NomBitBank.
  * Esta classe inicia a interface gráfica do usuário (GUI) ao criar e exibir um frame de banco.
  * 
- * @autor unifhnomura
+ * autor hugoe
  */
 public class NomBitBank {
 

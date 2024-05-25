@@ -9,7 +9,7 @@ package model;
  * Esta classe serve como base para outras classes que representam tipos específicos de pessoas, como um investidor.
  * Contém atributos comuns como nome e CPF.
  * 
- * @autor unifhnomura
+ * autor hugoe
  */
 public class Pessoa {
     private String Nome;

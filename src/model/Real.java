@@ -8,7 +8,7 @@ package model;
  * Classe que representa a moeda Real.
  * Esta classe herda da classe Moedas e adiciona o atributo valorDeMercado específico para a moeda Real.
  * 
- * @autor unifhnomura
+ * autor hugoe
  */
 public class Real extends Moedas {
     private double valorDeMercado;

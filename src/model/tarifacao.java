@@ -14,21 +14,21 @@ public interface Tarifacao {
      * @return O valor taxado de compra.
      */
     public double valorTaxadoDeCompra(double valor);
-    
+
     /**
      * Calcula o valor taxado de venda com base no valor da transação.
      * @param valor O valor da transação.
      * @return O valor taxado de venda.
      */
     public double valorTaxadoDeVenda(double valor);
-    
+
     /**
      * Calcula a taxa de compra com base no valor da transação.
      * @param valor O valor da transação.
      * @return A taxa de compra.
      */
     public double taxaDeCompra(double valor);
-    
+
     /**
      * Calcula a taxa de venda com base no valor da transação.
      * @param valor O valor da transação.

@@ -10,7 +10,7 @@ import java.util.Random;
  * Classe que representa a criptomoeda Ripple.
  * Esta classe herda da classe Moedas e implementa a interface Tarifacao para definir as taxas de compra e venda.
  * 
- * @autor unifhnomura
+ * autor hugoe
  */
 public class Ripple extends Moedas implements Tarifacao {
     
