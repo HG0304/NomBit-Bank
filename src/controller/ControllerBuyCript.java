@@ -91,13 +91,14 @@ public class ControllerBuyCript {
             }
 
             // Insere a transação na tabela 'transacoes'
-            String insertQuery = "INSERT INTO transacoes (cpf, tipo_moeda, valor, tipo_transacao, taxa) VALUES (?, ?, ?, ?, ?)";
+            String insertQuery = "INSERT INTO transacoes (cpf, tipo_moeda, valor, tipo_transacao, taxa, cotacao) VALUES (?, ?, ?, ?, ?, ?)";
             try (PreparedStatement pstmt = conn.prepareStatement(insertQuery)) {
                 pstmt.setString(1, investidor.getCPF());
                 pstmt.setString(2, "Bitcoin");
                 pstmt.setDouble(3, quantidadeDeCripto);
                 pstmt.setString(4, "Compra");
                 pstmt.setDouble(5, btc.taxaDeCompra(quantidade));
+                pstmt.setDouble(6, cotacao);
                 pstmt.executeUpdate();
             }
             
@@ -204,13 +205,14 @@ public class ControllerBuyCript {
             }
 
             // Insere a transação na tabela 'transacoes'
-            String insertQuery = "INSERT INTO transacoes (cpf, tipo_moeda, valor, tipo_transacao, taxa) VALUES (?, ?, ?, ?, ?)";
+            String insertQuery = "INSERT INTO transacoes (cpf, tipo_moeda, valor, tipo_transacao, taxa, cotacao) VALUES (?, ?, ?, ?, ?, ?)";
             try (PreparedStatement pstmt = conn.prepareStatement(insertQuery)) {
                 pstmt.setString(1, investidor.getCPF());
                 pstmt.setString(2, "Ethereum");
                 pstmt.setDouble(3, quantidadeDeCripto);
                 pstmt.setString(4, "Compra");
                 pstmt.setDouble(5, eth.taxaDeCompra(quantidade));
+                pstmt.setDouble(6, cotacao);
                 pstmt.executeUpdate();
             }
 
@@ -311,13 +313,14 @@ public class ControllerBuyCript {
             }
 
             // Insere a transação na tabela 'transacoes'
-            String insertQuery = "INSERT INTO transacoes (cpf, tipo_moeda, valor, tipo_transacao, taxa) VALUES (?, ?, ?, ?, ?)";
+            String insertQuery = "INSERT INTO transacoes (cpf, tipo_moeda, valor, tipo_transacao, taxa, cotacao) VALUES (?, ?, ?, ?, ?, ?)";
             try (PreparedStatement pstmt = conn.prepareStatement(insertQuery)) {
                 pstmt.setString(1, investidor.getCPF());
                 pstmt.setString(2, "Ripple");
                 pstmt.setDouble(3, quantidadeDeCripto);
                 pstmt.setString(4, "Compra");
                 pstmt.setDouble(5, xrp.taxaDeCompra(quantidade));
+                pstmt.setDouble(6, cotacao);
                 pstmt.executeUpdate();
             }
 
