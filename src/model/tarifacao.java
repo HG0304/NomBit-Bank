@@ -5,12 +5,34 @@
 package model;
 
 /**
- *
- * @author unifhnomura
+ * Interface para tarifação de transações de compra e venda de criptomoedas.
  */
-public interface tarifacao {
+public interface Tarifacao {
+    /**
+     * Calcula o valor taxado de compra com base no valor da transação.
+     * @param valor O valor da transação.
+     * @return O valor taxado de compra.
+     */
     public double valorTaxadoDeCompra(double valor);
+    
+    /**
+     * Calcula o valor taxado de venda com base no valor da transação.
+     * @param valor O valor da transação.
+     * @return O valor taxado de venda.
+     */
     public double valorTaxadoDeVenda(double valor);
-    public double taxaDeCompra (double valor);
-    public double taxaDeVenda (double valor);
+    
+    /**
+     * Calcula a taxa de compra com base no valor da transação.
+     * @param valor O valor da transação.
+     * @return A taxa de compra.
+     */
+    public double taxaDeCompra(double valor);
+    
+    /**
+     * Calcula a taxa de venda com base no valor da transação.
+     * @param valor O valor da transação.
+     * @return A taxa de venda.
+     */
+    public double taxaDeVenda(double valor);
 }
