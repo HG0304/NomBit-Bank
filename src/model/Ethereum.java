@@ -41,4 +41,20 @@ public class Ethereum extends Moedas{
         double taxa = valor * this.getValor() * 0.02;
         return taxa;
     }
+    
+    public void attCotacao() {
+        Random random = new Random();
+
+        double percentual = 0 + (5 - 0) * random.nextDouble();
+        int positivo = random.nextInt(2);
+        
+        if(positivo == 1){
+            double cotacao = this.getValor() * (1 + (percentual / 100));
+            this.setValor(cotacao);
+        } else {
+            double cotacao = this.getValor() * (1 + ( -percentual / 100));
+            this.setValor(cotacao);
+        }
+        
+    }
 }
