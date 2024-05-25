@@ -265,15 +265,20 @@ public class ExtratoFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_txtSenhaActionPerformed
 
     private void btConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConfirmarActionPerformed
+        // Verifica se a senha está correta
         Boolean senhaCorreta = control.confirmarSenha();
 
-        if(senhaCorreta){
+        if (senhaCorreta) {
+            // Se a senha estiver correta, muda para o índice 1 do jTabbedPane1
             jTabbedPane1.setSelectedIndex(1);
+            // Define o campo txtExtrato como não editável
             this.getTxtExtrato().setEditable(false);
+            // Exibe uma mensagem no console para depuração
             System.out.println("botao");
+            // Chama o método para obter o extrato da conta
             control.getExtrato();
-        }
-        else{
+        } else {
+            // Se a senha estiver incorreta, exibe uma mensagem de erro
             JOptionPane.showMessageDialog(this, "Senha incorreta");
         }
     }//GEN-LAST:event_btConfirmarActionPerformed

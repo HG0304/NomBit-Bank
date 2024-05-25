@@ -5,12 +5,21 @@
 package model;
 
 /**
- *
- * @author unifhnomura
+ * Classe que representa uma moeda genérica.
  */
 public class Moedas {
     private String type;
     private double valor;
+
+    /**
+     * Construtor da classe Moedas.
+     * @param type O tipo da moeda.
+     * @param valor O valor da moeda.
+     */
+    public Moedas(String type, double valor) {
+        this.type = type;
+        this.valor = valor;
+    }
 
     public String getType() {
         return type;
@@ -23,11 +32,4 @@ public class Moedas {
     public void setValor(double valor) {
         this.valor = valor;
     }
-
-    public Moedas(String type, double valor) {
-        this.type = type;
-        this.valor = valor;
-    }
-    
-    
 }

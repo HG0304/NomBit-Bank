@@ -7,54 +7,59 @@ package model;
 import java.util.Random;
 
 /**
- *
- * @author unifhnomura
+ * Classe que representa a criptomoeda Ripple.
+ * Esta classe herda da classe Moedas e implementa a interface Tarifacao para definir as taxas de compra e venda.
+ * 
+ * @autor unifhnomura
  */
-public class Ripple extends Moedas implements tarifacao{
+public class Ripple extends Moedas implements Tarifacao {
+    
+    /**
+     * Construtor da classe Ripple.
+     * @param valor O valor da Ripple.
+     */
     public Ripple(double valor) {
         super("Ripple", valor);
     }
-    
-    public double valorTaxadoDeCompra(double valor){
-        double taxa = 0;
-        
-        // 1%
-        taxa = valor * 0.99;
-        return taxa;
+
+    @Override
+    public double valorTaxadoDeCompra(double valor) {
+        // Aplica uma taxa de 1% para a compra
+        return valor * 0.99;
     }
-    
-    public double valorTaxadoDeVenda(double valor){
-        double taxa = 0;
-        
-        // 1%
-        valor = valor * this.getValor();
-        taxa = valor * 0.99;
-        return taxa;
+
+    @Override
+    public double valorTaxadoDeVenda(double valor) {
+        // Aplica uma taxa de 1% para a venda
+        return valor * this.getValor() * 0.99;
     }
-    
-    public double taxaDeCompra (double valor){
-        double taxa = valor * 0.01;
-        return taxa;
+
+    @Override
+    public double taxaDeCompra(double valor) {
+        // Calcula 1% de taxa de compra
+        return valor * 0.01;
     }
-    
-    public double taxaDeVenda (double valor){
-        double taxa = valor * this.getValor() * 0.01;
-        return taxa;
+
+    @Override
+    public double taxaDeVenda(double valor) {
+        // Calcula 1% de taxa de venda
+        return valor * this.getValor() * 0.01;
     }
-    
+
+    /**
+     * Atualiza a cotação da Ripple com base em um valor aleatório entre -5% e +5%.
+     */
     public void attCotacao() {
         Random random = new Random();
-
-        double percentual = 0 + (5 - 0) * random.nextDouble();
+        double percentual = 5 * random.nextDouble();
         int positivo = random.nextInt(2);
-        
-        if(positivo == 1){
+
+        if (positivo == 1) {
             double cotacao = this.getValor() * (1 + (percentual / 100));
             this.setValor(cotacao);
         } else {
-            double cotacao = this.getValor() * (1 + ( -percentual / 100));
+            double cotacao = this.getValor() * (1 - (percentual / 100));
             this.setValor(cotacao);
         }
-        
     }
 }

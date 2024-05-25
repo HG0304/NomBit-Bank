@@ -7,54 +7,57 @@ package model;
 import java.util.Random;
 
 /**
- *
- * @author unifhnomura
+ * Classe que representa a criptomoeda Bitcoin.
  */
-public class Bitcoin extends Moedas implements tarifacao{
+public class Bitcoin extends Moedas implements Tarifacao {
+    
+    /**
+     * Construtor da classe Bitcoin.
+     * @param valor O valor da Bitcoin.
+     */
     public Bitcoin(double valor) {
         super("Bitcoin", valor);
     }
     
-    public double valorTaxadoDeCompra(double valor){
-        double taxa = 0;
-        
-        // 2%
-        taxa = valor * 0.98;
-        return taxa;
+    @Override
+    public double valorTaxadoDeCompra(double valor) {
+        // Taxa de 2%
+        return valor * 0.98;
+    }
+
+    @Override
+    public double valorTaxadoDeVenda(double valor) {
+        // Taxa de 3%
+        return valor * this.getValor() * 0.97;
+    }
+
+    @Override
+    public double taxaDeCompra(double valor) {
+        // 2% de taxa
+        return valor * 0.02;
+    }
+
+    @Override
+    public double taxaDeVenda(double valor) {
+        // 3% de taxa
+        return valor * this.getValor() * 0.03;
     }
     
-    public double valorTaxadoDeVenda(double valor){
-        double taxa = 0;
-        
-        // 3%
-        valor = valor * this.getValor();
-        taxa = valor * 0.97;
-        return taxa;
-    }
-    
-    public double taxaDeCompra (double valor){
-        double taxa = valor * 0.02;
-        return taxa;
-    }
-    
-    public double taxaDeVenda (double valor){
-        double taxa = valor * this.getValor() * 0.03;
-        return taxa;
-    }
-    
+    /**
+     * Atualiza a cotação da Bitcoin com base em um valor aleatório entre -5% e +5%.
+     */
     public void attCotacao() {
         Random random = new Random();
 
         double percentual = 0 + (5 - 0) * random.nextDouble();
         int positivo = random.nextInt(2);
         
-        if(positivo == 1){
+        if (positivo == 1) {
             double cotacao = this.getValor() * (1 + (percentual / 100));
             this.setValor(cotacao);
         } else {
-            double cotacao = this.getValor() * (1 + ( -percentual / 100));
+            double cotacao = this.getValor() * (1 + (-percentual / 100));
             this.setValor(cotacao);
         }
-        
     }
 }

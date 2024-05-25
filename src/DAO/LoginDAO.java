@@ -47,10 +47,14 @@ public class LoginDAO {
         return resultado;
     }
     
+    // getSaldo realiza a consulta no banco de dados recebendo como parametro
+    // o investidor e retornando um objeto da classe Carteira
     public Carteira getSaldo(Investidor investidor) throws SQLException{
-
+        
+        // string que contem a query sql
         String sql = "SELECT * FROM carteiras WHERE cpf = ?;";
         
+        // formata a query
         PreparedStatement statement = conn.prepareStatement(sql);
         statement.setString(1, investidor.getCPF());
         statement.execute();
@@ -58,28 +62,36 @@ public class LoginDAO {
         ResultSet resultado = statement.getResultSet();
         resultado.next();
         
+        // armazena o saldo de cada moeda nas variaveis
         double saldoReal = Double.parseDouble(resultado.getString("saldo_real"));
         double saldoBitcoin = Double.parseDouble(resultado.getString("saldo_bitcoin"));
         double saldoEthereum = Double.parseDouble(resultado.getString("saldo_ethereum"));
         double saldoRipple = Double.parseDouble(resultado.getString("saldo_ripple"));
-   
+        
+        // cria o objeto Carteira e retirna ela
         return new Carteira(saldoReal, saldoBitcoin, saldoEthereum, saldoRipple);
     }
     
+    // motodo getCotacao realiza a consulta no banco de dados e retorna a ultima
+    // cotacao cadastrada
     public double getCotacao(String moeda) throws SQLException {
+        
+        // query sql
         String sql = "SELECT c1.cotacao FROM cotacoes c1 WHERE c1.moeda = ? AND c1.data_hora = (\n" +
                      "SELECT MAX(c2.data_hora)\n" +
                      "FROM cotacoes c2\n" +
                      "WHERE c2.moeda = c1.moeda);";
-
+        
+        // formata a query
         PreparedStatement pstmt = conn.prepareStatement(sql);
         pstmt.setString(1, moeda);  // Define o valor do parâmetro de moeda
         ResultSet resultado = pstmt.executeQuery();
-
+        
+        // estrutura condicional que verifica se existe alguma cotacao cadastrada
         if (resultado.next()) {
             double cotacao = resultado.getDouble("cotacao");
             return cotacao;
-        } else {
+        } else { // caso nao tenha cotacao retorna zero
             return 0.0;
         }
     }

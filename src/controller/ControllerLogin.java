@@ -25,29 +25,49 @@ public class ControllerLogin {
         this.view = view;
     }
     
-    public void loginInvestidor(){
+        /**
+     * Método para realizar o login do investidor.
+     * Verifica se as credenciais do investidor são válidas e, em caso afirmativo, exibe o menu principal.
+     */
+    public void loginInvestidor() {
+        // Cria um objeto Investidor com as credenciais fornecidas na interface gráfica
         Investidor investidor = new Investidor(null, view.getTxtSenha().getText(), view.getTxtCpf().getText());
-       
+
+        // Inicialização da conexão com o banco de dados
         Conexao conexao = new Conexao();
-        try{
+
+        try {
+            // Estabelece a conexão com o banco de dados
             Connection conn = conexao.getConnection();
+
+            // Instância do DAO para acesso aos dados de login
             LoginDAO dao = new LoginDAO(conn);
+
+            // Consulta o banco de dados para verificar as credenciais do investidor
             ResultSet res = dao.consultar(investidor);
-            
-            if(res.next()){
+
+            // Verifica se as credenciais são válidas
+            if(res.next()) {
+                // Se as credenciais forem válidas, obtém os dados do investidor
                 String nome = res.getString("nome");
                 String cpf = res.getString("cpf");
                 String senha = res.getString("senha");
 
+                // Exibe o menu principal com os dados do investidor autenticado
                 MenuFrame viewInvestidor = new MenuFrame(new Investidor(nome, senha, cpf));
                 viewInvestidor.setVisible(true);
+
+                // Fecha a tela de login
                 view.dispose();
+
+                // Fecha a conexão com o banco de dados
                 conn.close();
-                
             } else {
-                JOptionPane.showMessageDialog(view, "Login nao efetuado");
+                // Se as credenciais não forem válidas, exibe uma mensagem de erro
+                JOptionPane.showMessageDialog(view, "Login não efetuado");
             }
-        } catch(SQLException e){
+        } catch(SQLException e) {
+            // Em caso de erro de conexão, exibe uma mensagem de erro
             JOptionPane.showMessageDialog(view, "Erro de conexão: " + e.getMessage());
         }
     }

@@ -5,29 +5,45 @@
 package model;
 
 /**
- *
- * @author unifhnomura
+ * Classe que representa um Investidor, herdando de Pessoa.
  */
-public class Investidor extends Pessoa{
+public class Investidor extends Pessoa {
     private String senha;
     private Carteira carteira;
-    
-    public String getSenha() {
-        return senha;
-    }
-    
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
-    
+
+    /**
+     * Construtor da classe Investidor.
+     * @param Nome Nome do investidor.
+     * @param senha Senha do investidor.
+     * @param CPF CPF do investidor.
+     */
     public Investidor(String Nome, String senha, String CPF) {
         super(Nome, CPF);
         this.senha = senha;
         this.carteira = new Carteira();
     }
-    
-    public Carteira getCarteira(){
+
+    /**
+     * Retorna a senha do investidor.
+     * @return senha do investidor.
+     */
+    public String getSenha() {
+        return senha;
+    }
+
+    /**
+     * Define a senha do investidor.
+     * @param senha Nova senha do investidor.
+     */
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    /**
+     * Retorna a carteira do investidor.
+     * @return carteira do investidor.
+     */
+    public Carteira getCarteira() {
         return carteira;
     }
-    
 }

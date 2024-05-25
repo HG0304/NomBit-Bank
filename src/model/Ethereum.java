@@ -7,54 +7,55 @@ package model;
 import java.util.Random;
 
 /**
- *
- * @author unifhnomura
+ * Classe que representa a criptomoeda Ethereum.
  */
-public class Ethereum extends Moedas implements tarifacao{
+public class Ethereum extends Moedas implements Tarifacao {
+    
+    /**
+     * Construtor da classe Ethereum.
+     * @param valor O valor da Ethereum.
+     */
     public Ethereum(double valor) {
         super("Ethereum", valor);
     }
 
-    public double valorTaxadoDeCompra(double valor){
-        double taxa = 0;
-        
-        // 1%
-        taxa = valor * 0.99;
-        return taxa;
+    @Override
+    public double valorTaxadoDeCompra(double valor) {
+        // Taxa de 1%
+        return valor * 0.99;
     }
-    
-    public double valorTaxadoDeVenda(double valor){
-        double taxa = 0;
-        
-        // 2%
-        valor = valor * this.getValor();
-        taxa = valor * 0.98;
-        return taxa;
+
+    @Override
+    public double valorTaxadoDeVenda(double valor) {
+        // Taxa de 2%
+        return valor * this.getValor() * 0.98;
     }
-    
-    public double taxaDeCompra (double valor){
-        double taxa = valor * 0.01;
-        return taxa;
+
+    @Override
+    public double taxaDeCompra(double valor) {
+        // 1% de taxa
+        return valor * 0.01;
     }
-    
-    public double taxaDeVenda (double valor){
-        double taxa = valor * this.getValor() * 0.02;
-        return taxa;
+
+    @Override
+    public double taxaDeVenda(double valor) {
+        // 2% de taxa
+        return valor * this.getValor() * 0.02;
     }
-    
+
+    /**
+     * Atualiza a cotação da Ethereum com base em um valor aleatório entre -5% e +5%.
+     */
     public void attCotacao() {
         Random random = new Random();
 
-        double percentual = 0 + (5 - 0) * random.nextDouble();
-        int positivo = random.nextInt(2);
+        double percentual = random.nextDouble() * 5; // Gera um percentual entre 0 e 5
+        boolean positivo = random.nextBoolean(); // Determina se o percentual é positivo ou negativo
         
-        if(positivo == 1){
-            double cotacao = this.getValor() * (1 + (percentual / 100));
-            this.setValor(cotacao);
+        if (positivo) {
+            this.setValor(this.getValor() * (1 + (percentual / 100)));
         } else {
-            double cotacao = this.getValor() * (1 + ( -percentual / 100));
-            this.setValor(cotacao);
+            this.setValor(this.getValor() * (1 - (percentual / 100)));
         }
-        
     }
 }

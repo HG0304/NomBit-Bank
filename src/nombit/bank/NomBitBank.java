@@ -7,17 +7,22 @@ package nombit.bank;
 import view.BankFrame;
 
 /**
- *
- * @author unifhnomura
+ * Classe principal para a aplicação NomBitBank.
+ * Esta classe inicia a interface gráfica do usuário (GUI) ao criar e exibir um frame de banco.
+ * 
+ * @autor unifhnomura
  */
 public class NomBitBank {
 
     /**
-     * @param args the command line arguments
+     * Método principal que serve como ponto de entrada para a aplicação.
+     * 
+     * @param args os argumentos da linha de comando (não utilizados).
      */
     public static void main(String[] args) {
-        BankFrame jc = new BankFrame();
-        jc.setVisible(true);
+        // Cria uma instância de BankFrame
+        BankFrame bankFrame = new BankFrame();
+        // Torna a janela visível
+        bankFrame.setVisible(true);
     }
-    
 }

@@ -6,12 +6,9 @@ package controller;
 
 import DAO.Conexao;
 import DAO.LoginDAO;
-import model.Investidor;
 import view.ExibirSaldoFrame;
 import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.PreparedStatement;
 import javax.swing.JOptionPane;
 import model.Carteira;
 import model.Investidor;
@@ -29,23 +26,39 @@ public class ControllerSaldo {
         this.investidor = investidor;
     }
     
-    public Boolean confirmarSenha(){
-
+        /**
+     * Método para confirmar se a senha inserida corresponde à senha do investidor.
+     * @return true se a senha estiver correta, caso contrário, retorna false.
+     */
+    public Boolean confirmarSenha() {
+        // Obtém a senha digitada na interface gráfica
         String senha = view.getTxtSenha().getText();
-        
-        if(investidor.getSenha().equals(senha) == true){
-            return true;
+
+        // Compara a senha digitada com a senha do investidor
+        if(investidor.getSenha().equals(senha)) {
+            return true; // Retorna true se as senhas coincidirem
         }
-        return false;
+        return false; // Retorna false se as senhas não coincidirem
     }
-    
-    public void consultarSaldo(){
+
+    /**
+     * Método para consultar e exibir o saldo da conta do investidor.
+     */
+    public void consultarSaldo() {
+        // Inicialização da conexão com o banco de dados
         Conexao conexao = new Conexao();
-        try{
+
+        try {
+            // Estabelece a conexão com o banco de dados
             Connection conn = conexao.getConnection();
+
+            // Instância do DAO para acessar os dados da carteira do investidor
             LoginDAO dao = new LoginDAO(conn);
+
+            // Consulta o banco de dados para obter o saldo da conta do investidor
             Carteira res = dao.getSaldo(investidor);
-            
+
+            // Formata a mensagem com os saldos das diferentes moedas
             String mensagem = String.format(
                 "Saldo da conta em Real: R$ %.2f\n" +
                 "Saldo da conta em Bitcoin: BTC %.10f\n" +
@@ -57,9 +70,11 @@ public class ControllerSaldo {
                 res.getSaldoRipple()
             );
 
+            // Exibe a mensagem com os saldos da conta do investidor
             JOptionPane.showMessageDialog(null, mensagem, "Aviso", JOptionPane.INFORMATION_MESSAGE);
-            
-        } catch(SQLException e){
+
+        } catch(SQLException e) {
+            // Em caso de erro de conexão, exibe uma mensagem de erro
             JOptionPane.showMessageDialog(view, "Erro: " + e.getMessage());
         }
     }

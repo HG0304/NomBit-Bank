@@ -137,12 +137,15 @@ public class ExibirSaldoFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConfirmarActionPerformed
+        // Verifica se a senha está correta
         Boolean senhaCorreta = control.confirmarSenha();
         
-        if(senhaCorreta){          
+        if(senhaCorreta){  
+            // Se a senha estiver correta, consulta o saldo
             control.consultarSaldo();
         }
         else{
+            // Se a senha estiver incorreta, exibe uma mensagem de erro
             JOptionPane.showMessageDialog(this, "Senha incorreta");
         }
     }//GEN-LAST:event_btConfirmarActionPerformed

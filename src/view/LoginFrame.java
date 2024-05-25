@@ -156,6 +156,7 @@ public class LoginFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLoginActionPerformed
+        // Chama a funcao que realiza o login
         control.loginInvestidor();
     }//GEN-LAST:event_btLoginActionPerformed
 

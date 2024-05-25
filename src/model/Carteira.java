@@ -5,12 +5,31 @@
 package model;
 
 /**
- *
- * @author unifhnomura
+ * Classe que representa a carteira do investidor, contendo saldos em diversas moedas.
  */
 public class Carteira {
-    double saldoReal, saldoBitcoin, saldoEthereum, saldoRipple;
+    private double saldoReal;
+    private double saldoBitcoin;
+    private double saldoEthereum;
+    private double saldoRipple;
 
+    // Construtor padrão que inicializa todos os saldos com zero
+    public Carteira() {
+        this.saldoReal = 0;
+        this.saldoBitcoin = 0;
+        this.saldoEthereum = 0;
+        this.saldoRipple = 0;
+    }
+
+    // Construtor que inicializa os saldos com os valores fornecidos
+    public Carteira(double saldoReal, double saldoBitcoin, double saldoEthereum, double saldoRipple) {
+        this.saldoReal = saldoReal;
+        this.saldoBitcoin = saldoBitcoin;
+        this.saldoEthereum = saldoEthereum;
+        this.saldoRipple = saldoRipple;
+    }
+
+    // Getters e setters para saldoReal
     public double getSaldoReal() {
         return saldoReal;
     }
@@ -19,6 +38,7 @@ public class Carteira {
         this.saldoReal = saldoReal;
     }
 
+    // Getters e setters para saldoBitcoin
     public double getSaldoBitcoin() {
         return saldoBitcoin;
     }
@@ -27,6 +47,7 @@ public class Carteira {
         this.saldoBitcoin = saldoBitcoin;
     }
 
+    // Getters e setters para saldoEthereum
     public double getSaldoEthereum() {
         return saldoEthereum;
     }
@@ -35,6 +56,7 @@ public class Carteira {
         this.saldoEthereum = saldoEthereum;
     }
 
+    // Getters e setters para saldoRipple
     public double getSaldoRipple() {
         return saldoRipple;
     }
@@ -42,20 +64,4 @@ public class Carteira {
     public void setSaldoRipple(double saldoRipple) {
         this.saldoRipple = saldoRipple;
     }
-
-    public Carteira() {
-        this.saldoReal = 0;
-        this.saldoBitcoin = 0;
-        this.saldoEthereum = 0;
-        this.saldoRipple = 0;
-    }
-
-    public Carteira(double saldoReal, double saldoBitcoin, double saldoEthereum, double saldoRipple) {
-        this.saldoReal = saldoReal;
-        this.saldoBitcoin = saldoBitcoin;
-        this.saldoEthereum = saldoEthereum;
-        this.saldoRipple = saldoRipple;
-    }
-    
-    
 }
